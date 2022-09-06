@@ -1,29 +1,21 @@
 {
   "todos": [
     {
-      "title": "Dani",
-      "state": "done",
+      "title": "First Task",
       "id": 1
     },
     {
-      "title": "Jani",
+      "title": "Second Task",
       "state": "done",
       "id": 2
     },
     {
-      "title": "Hami",
-      "state": "done",
+      "title": "Third Task",
       "id": 3
     },
     {
-      "title": "Papo",
-      "state": "done",
+      "title": "Fourth Task",
       "id": 4
-    },
-    {
-      "title": "mkmkm",
-      "id": 5
     }
   ]
 }
-
