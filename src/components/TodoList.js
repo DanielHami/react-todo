@@ -10,7 +10,7 @@ const TodoList = () => {
     const [title, setTitle] = useState('')
 
     async function handlePut(submitId) {
-        const {data, error } = await supabase
+        await supabase
             .from('todo')
             .update({ title: `${title}`, state: 'none' })
             .eq('id', submitId)
@@ -26,7 +26,6 @@ const TodoList = () => {
             if (error){
                 setFechError('Could not fetch the todos')
                 setItems(null)
-                alert(fetchError)
             }
             if (data) {
                 setFechError(null)
@@ -36,35 +35,32 @@ const TodoList = () => {
     }, [])
 
     async function HandleDelete(parameter) {
-        const { } = await supabase
+       await supabase
             .from('todo')
             .delete()
             .eq('id', parameter)
             window.location.reload()
     }
 
-
-
-
    async function handleStatus(id) {
-        const { data, error } = await supabase
+         await supabase
             .from('todo')
             .update({
                  state: 'done',})
             .eq('id', id)
             window.location.reload()
+            
     }
-
-
 
     function changeIsReply(clickedId, title) {
         setTitle(title)
         setState(clickedId)
 
     }
-    console.log(title)
 
     return (
+        <div>
+        {!fetchError ?
         <div className="flex flex-col gap-6 mt-20 lg:grid lg:grid-cols-4 md:grid md:grid-cols-3  md:gap-5">
             {items.map(props =>
                 <div key={props.id} className="flex flex-col gap-8 justify-around rounded-lg text-left px-4 py-6 space-y-5 backdrop-blur-sm bg-white/30 ">
@@ -77,6 +73,8 @@ const TodoList = () => {
                             <button onClick={() => changeIsReply(props.id, props.title)} className="border-2 border-blue-900 w-20 rounded-xl">Edit</button>}
                     </div>
                 </div>)}
+        </div>
+        :(<div className="text-center"><p>{fetchError}</p></div>)}
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { supabase } from "../supabaseClient"
-/*import TodoList from "./TodoList"*/
 import { BsPlusCircle } from 'react-icons/bs'
 import TodoList from "./TodoList"
 
@@ -19,7 +18,7 @@ function Form() {
             setFormError('Please fill in the field correctly')
             return
         }
-        const { data, error } = await supabase
+        const { data } = await supabase
             .from('todo')
             .insert({ title })
         if (data)
